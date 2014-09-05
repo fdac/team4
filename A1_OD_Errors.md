@@ -11,6 +11,7 @@
 
 <p>
   Common Errors:
+  <ul>- The Gutenburg books include lengthy licenses, which should not be accounted for in the analysis</ul>
   <ul>- Books written in different eras</ul>
   <ul>- Books of differing genres</ul>
   <ul>- Partial/Incomplete Books (ex. missing chapters)</ul>
