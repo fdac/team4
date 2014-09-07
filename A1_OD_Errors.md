@@ -16,4 +16,5 @@
   <ul>- Books of differing genres</ul>
   <ul>- Partial/Incomplete Books (ex. missing chapters)</ul>
   <ul>- Incorrect translations</ul>
+  <ul>- Whether words with punctuation in them count as the same word as the version without punctuation changes results</ul>
 </p>
