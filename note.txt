@@ -1,0 +1,6 @@
+Possible attributes we could sort by:
+  - Language (optional parameter)
+  - Repo type (eg. git, hw, svn, ...)
+  - Size
+  - Recently updated
+  - Repo age (eg. older than 1 yr, ...)
