@@ -1,6 +1,9 @@
 setwd("~/Documents/BusinessAnalytics/COSC 594/Project1/team4")
 getwd()
 
+library(ggplot2)
+library(dplyr)
+
 # Import data and some basic descriptives
 d <- read.csv("allPublicRepos.csv",
               fileEncoding="UTF-8",
@@ -29,7 +32,7 @@ length(unique(d$owner)) # 189,047 unique user names
   # supposedly more than 1 mil users total
   # about 80,000 "teams"
 length(unique(d$language)) # 322 languages
-length(unique(d$scm)) # 240 different scm values
+length(unique(d$scm)) # 240 different scm values - there are dates
 
 
 library(ggplot2)
@@ -54,5 +57,44 @@ rm(p.size)
 # running sum of repos to show growth
 # most popular language
 # number of repos per technology
+
+
+# technologies used
+head(sort(unique(d$scm), decreasing = TRUE), 30)
+  #html5 hg git then just numbers
+a <- length(d$scm[ which(d$scm == "hg") ])
+b <- length(d$scm[ which(d$scm == "git") ])
+c <- length(d$scm[!d$scm %in% c("hg", "git") ])
+a + b + c
+nrow(d)
+
+# most popular languages
+length(unique(d$language))
+table(d$language)
+
+# repo size stats
+summary(d$size)
+mean(d$size)
+qplot(size, data = d, geom = "histogram")
+
+# repo lifetime stats
+summary(d$activity)
+qplot(activity, data = d, geom = "histogram")
+
+# still active repos
+length(which(Sys.Date() - d$updated_on < 30))
+
+
+
+min(d$created_on, na.rm = TRUE)
+max(d$created_on, na.rm = TRUE)
+length(unique(d$created_on))
+
+# trying to look at growth over time - create a running sum of repo
+# count over the date range
+library(dplyr)
+date.groups <- group_by(d[order(d$created_on),], created_on)
+head(date.groups)
+group_size(date.groups)
 
 
