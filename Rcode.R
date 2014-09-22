@@ -5,7 +5,7 @@ library(ggplot2)
 library(dplyr)
 
 # Import data and some basic descriptives
-d <- read.csv("allPublicRepos.csv",
+d <- read.csv("reposNoNames.csv",
               fileEncoding="UTF-8",
               quote = "",
               stringsAsFactors = FALSE,
@@ -28,12 +28,12 @@ class(d$updated_on)
 d$activity <- as.numeric( d$updated_on - d$created_on )
 head(d$activity)
 
-length(unique(d$owner)) # 189,047 unique user names 
+length(unique(d$owner)) # 188,874 unique user names 
   # supposedly more than 1 mil users total
   # about 80,000 "teams"
-length(unique(d$language)) # 322 languages
-length(unique(d$scm)) # 240 different scm values - there are dates
-
+length(unique(d$language)) # 129 languages
+length(unique(d$scm)) # 3 different scm values - there are dates
+unique(d$scm)
 
 library(ggplot2)
 p.language <- ggplot( data = d, aes(x = language) )
